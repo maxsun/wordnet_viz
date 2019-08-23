@@ -23,7 +23,7 @@ connections = []
 
 queue = ['linguistics.n.01']
 
-while len(queue) > 0 and len(nodes) < 100:
+while len(queue) > 0 and len(nodes) < 1000:
     synset = read_synset(queue[0])
     nodes.add(synset['name'])
     for s in synset['hypernyms'] + synset['hyponyms']:
@@ -39,6 +39,9 @@ while len(queue) > 0 and len(nodes) < 100:
         
     queue = queue[1:]
 
-print([{'name': n} for n in list(nodes)])
-print(connections)
+nodes = [{'name': n} for n in list(nodes)]
 # print('Data saved to file!')
+open('data.json', 'w').write(json.dumps({
+    'nodes': nodes,
+    'links': connections
+}))
