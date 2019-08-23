@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <style>
+    body { margin:0;position:fixed;top:0;right:0;bottom:0;left:0; }
+
+    circle {
+        stroke: white;
+        stroke-width: 1px;
+        fill: white;
+    }
+
+    .links line {
+        stroke: lightgray;
+    }
+
+    .labels:hover {
+        cursor: pointer;
+    }
+
+  </style>
+</head>
+
+<body>
+  <script>
+    // Feel free to change or delete any of the code you see in this editor!
+    var svg = d3.select("body").append("svg")
+      .attr("width", 960)
+      .attr("height", 500);
+    
+    var graph = {
+    "nodes": [{'name': 'cognitive_semantics.n.01'}, {'name': 'metallurgy.n.01'}, {'name': 'frontier.n.03'}, {'name': 'protology.n.01'}, {'name': 'numerology.n.01'}, {'name': 'communications.n.01'}, {'name': 'physics.n.02'}, {'name': 'futurology.n.01'}, {'name': 'neurolinguistics.n.01'}, {'name': 'economics.n.01'}, {'name': 'grammar.n.01'}, {'name': 'proxemics.n.01'}, {'name': 'thanatology.n.01'}, {'name': 'differential_psychology.n.01'}, {'name': 'syntax.n.03'}, {'name': 'systematics.n.01'}, {'name': 'science.n.01'}, {'name': 'physiological_psychology.n.01'}, {'name': 'pure_mathematics.n.01'}, {'name': 'architecture.n.02'}, {'name': 'prescriptive_grammar.n.01'}, {'name': 'computational_linguistics.n.01'}, {'name': 'genealogy.n.02'}, {'name': 'cryptanalysis.n.01'}, {'name': 'descriptive_linguistics.n.01'}, {'name': 'agrology.n.01'}, {'name': 'lexical_semantics.n.01'}, {'name': 'semantics.n.01'}, {'name': 'machine_translation.n.01'}, {'name': 'deixis.n.01'}, {'name': 'synchronic_linguistics.n.01'}, {'name': 'region.n.05'}, {'name': 'strategics.n.01'}, {'name': 'major.n.04'}, {'name': 'social_science.n.01'}, {'name': 'lexicostatistics.n.01'}, {'name': 'comparative_psychology.n.01'}, {'name': 'sociology.n.01'}, {'name': 'knowledge_domain.n.01'}, {'name': 'theology.n.01'}, {'name': 'powder_metallurgy.n.01'}, {'name': 'natural_science.n.01'}, {'name': 'psychology.n.01'}, {'name': 'agrobiology.n.01'}, {'name': 'descriptive_grammar.n.01'}, {'name': 'psychometry.n.01'}, {'name': 'applied_mathematics.n.01'}, {'name': 'cybernetics.n.01'}, {'name': 'cosmography.n.01'}, {'name': 'developmental_psychology.n.01'}, {'name': 'chemistry.n.01'}, {'name': 'cognitive_psychology.n.01'}, {'name': 'morphology.n.02'}, {'name': 'escapology.n.01'}, {'name': 'allometry.n.01'}, {'name': 'earth_science.n.01'}, {'name': 'humanistic_discipline.n.01'}, {'name': 'metrology.n.01'}, {'name': 'scientific_knowledge.n.01'}, {'name': 'civics.n.01'}, {'name': 'pragmatics.n.01'}, {'name': 'social_psychology.n.01'}, {'name': 'life_science.n.01'}, {'name': 'graphology.n.01'}, {'name': 'architectonics.n.01'}, {'name': 'nutrition.n.03'}, {'name': 'formal_semantics.n.01'}, {'name': 'artificial_intelligence.n.01'}, {'name': 'bibliotics.n.01'}, {'name': 'etymology.n.02'}, {'name': 'military_science.n.01'}, {'name': 'theogony.n.01'}, {'name': 'experimental_psychology.n.01'}, {'name': 'ology.n.01'}, {'name': 'abnormal_psychology.n.01'}, {'name': 'occultism.n.01'}, {'name': 'natural_language_processing.n.01'}, {'name': 'dialect_geography.n.01'}, {'name': 'sociolinguistics.n.01'}, {'name': 'biosystematics.n.01'}, {'name': 'orthoepy.n.02'}, {'name': 'politics.n.02'}, {'name': 'information_science.n.01'}, {'name': 'anthropology.n.01'}, {'name': 'home_economics.n.01'}, {'name': 'morphophonemics.n.01'}, {'name': 'discipline.n.01'}, {'name': 'engineering.n.02'}, {'name': 'physics.n.01'}, {'name': 'cognitive_science.n.01'}, {'name': 'linguistics.n.01'}, {'name': 'applied_psychology.n.01'}, {'name': 'historical_linguistics.n.01'}, {'name': 'content.n.05'}, {'name': 'mathematics.n.01'}, {'name': 'phonology.n.01'}, {'name': 'taxonomy.n.02'}, {'name': 'agronomy.n.01'}, {'name': 'structuralism.n.01'}, {'name': 'prescriptive_linguistics.n.01'}, {'name': 'natural_history.n.01'}],
+    "links":[{'source': 'linguistics.n.01', 'target': 'science.n.01'}, {'source': 'linguistics.n.01', 'target': 'computational_linguistics.n.01'}, {'source': 'linguistics.n.01', 'target': 'descriptive_linguistics.n.01'}, {'source': 'linguistics.n.01', 'target': 'dialect_geography.n.01'}, {'source': 'linguistics.n.01', 'target': 'etymology.n.02'}, {'source': 'linguistics.n.01', 'target': 'historical_linguistics.n.01'}, {'source': 'linguistics.n.01', 'target': 'neurolinguistics.n.01'}, {'source': 'linguistics.n.01', 'target': 'pragmatics.n.01'}, {'source': 'linguistics.n.01', 'target': 'prescriptive_linguistics.n.01'}, {'source': 'linguistics.n.01', 'target': 'semantics.n.01'}, {'source': 'linguistics.n.01', 'target': 'sociolinguistics.n.01'}, {'source': 'linguistics.n.01', 'target': 'structuralism.n.01'}, {'source': 'linguistics.n.01', 'target': 'synchronic_linguistics.n.01'}, {'source': 'science.n.01', 'target': 'discipline.n.01'}, {'source': 'science.n.01', 'target': 'agrobiology.n.01'}, {'source': 'science.n.01', 'target': 'agrology.n.01'}, {'source': 'science.n.01', 'target': 'agronomy.n.01'}, {'source': 'science.n.01', 'target': 'architectonics.n.01'}, {'source': 'science.n.01', 'target': 'cognitive_science.n.01'}, {'source': 'science.n.01', 'target': 'cryptanalysis.n.01'}, {'source': 'science.n.01', 'target': 'information_science.n.01'}, {'source': 'science.n.01', 'target': 'linguistics.n.01'}, {'source': 'science.n.01', 'target': 'mathematics.n.01'}, {'source': 'science.n.01', 'target': 'metallurgy.n.01'}, {'source': 'science.n.01', 'target': 'metrology.n.01'}, {'source': 'science.n.01', 'target': 'natural_history.n.01'}, {'source': 'science.n.01', 'target': 'natural_science.n.01'}, {'source': 'science.n.01', 'target': 'nutrition.n.03'}, {'source': 'science.n.01', 'target': 'psychology.n.01'}, {'source': 'science.n.01', 'target': 'social_science.n.01'}, {'source': 'science.n.01', 'target': 'strategics.n.01'}, {'source': 'science.n.01', 'target': 'systematics.n.01'}, {'source': 'science.n.01', 'target': 'thanatology.n.01'}, {'source': 'computational_linguistics.n.01', 'target': 'linguistics.n.01'}, {'source': 'computational_linguistics.n.01', 'target': 'machine_translation.n.01'}, {'source': 'descriptive_linguistics.n.01', 'target': 'linguistics.n.01'}, {'source': 'descriptive_linguistics.n.01', 'target': 'grammar.n.01'}, {'source': 'descriptive_linguistics.n.01', 'target': 'morphophonemics.n.01'}, {'source': 'descriptive_linguistics.n.01', 'target': 'phonology.n.01'}, {'source': 'dialect_geography.n.01', 'target': 'linguistics.n.01'}, {'source': 'etymology.n.02', 'target': 'linguistics.n.01'}, {'source': 'etymology.n.02', 'target': 'lexicostatistics.n.01'}, {'source': 'historical_linguistics.n.01', 'target': 'linguistics.n.01'}, {'source': 'neurolinguistics.n.01', 'target': 'linguistics.n.01'}, {'source': 'pragmatics.n.01', 'target': 'linguistics.n.01'}, {'source': 'prescriptive_linguistics.n.01', 'target': 'linguistics.n.01'}, {'source': 'semantics.n.01', 'target': 'linguistics.n.01'}, {'source': 'semantics.n.01', 'target': 'cognitive_semantics.n.01'}, {'source': 'semantics.n.01', 'target': 'deixis.n.01'}, {'source': 'semantics.n.01', 'target': 'formal_semantics.n.01'}, {'source': 'semantics.n.01', 'target': 'lexical_semantics.n.01'}, {'source': 'sociolinguistics.n.01', 'target': 'linguistics.n.01'}, {'source': 'structuralism.n.01', 'target': 'linguistics.n.01'}, {'source': 'synchronic_linguistics.n.01', 'target': 'linguistics.n.01'}, {'source': 'discipline.n.01', 'target': 'knowledge_domain.n.01'}, {'source': 'discipline.n.01', 'target': 'allometry.n.01'}, {'source': 'discipline.n.01', 'target': 'architecture.n.02'}, {'source': 'discipline.n.01', 'target': 'bibliotics.n.01'}, {'source': 'discipline.n.01', 'target': 'communications.n.01'}, {'source': 'discipline.n.01', 'target': 'engineering.n.02'}, {'source': 'discipline.n.01', 'target': 'escapology.n.01'}, {'source': 'discipline.n.01', 'target': 'frontier.n.03'}, {'source': 'discipline.n.01', 'target': 'futurology.n.01'}, {'source': 'discipline.n.01', 'target': 'genealogy.n.02'}, {'source': 'discipline.n.01', 'target': 'graphology.n.01'}, {'source': 'discipline.n.01', 'target': 'humanistic_discipline.n.01'}, {'source': 'discipline.n.01', 'target': 'major.n.04'}, {'source': 'discipline.n.01', 'target': 'military_science.n.01'}, {'source': 'discipline.n.01', 'target': 'numerology.n.01'}, {'source': 'discipline.n.01', 'target': 'occultism.n.01'}, {'source': 'discipline.n.01', 'target': 'ology.n.01'}, {'source': 'discipline.n.01', 'target': 'protology.n.01'}, {'source': 'discipline.n.01', 'target': 'science.n.01'}, {'source': 'discipline.n.01', 'target': 'theogony.n.01'}, {'source': 'discipline.n.01', 'target': 'theology.n.01'}, {'source': 'agrobiology.n.01', 'target': 'science.n.01'}, {'source': 'agrology.n.01', 'target': 'science.n.01'}, {'source': 'agronomy.n.01', 'target': 'science.n.01'}, {'source': 'architectonics.n.01', 'target': 'science.n.01'}, {'source': 'cognitive_science.n.01', 'target': 'science.n.01'}, {'source': 'cryptanalysis.n.01', 'target': 'science.n.01'}, {'source': 'information_science.n.01', 'target': 'science.n.01'}, {'source': 'information_science.n.01', 'target': 'cybernetics.n.01'}, {'source': 'information_science.n.01', 'target': 'natural_language_processing.n.01'}, {'source': 'mathematics.n.01', 'target': 'science.n.01'}, {'source': 'mathematics.n.01', 'target': 'applied_mathematics.n.01'}, {'source': 'mathematics.n.01', 'target': 'pure_mathematics.n.01'}, {'source': 'metallurgy.n.01', 'target': 'science.n.01'}, {'source': 'metallurgy.n.01', 'target': 'powder_metallurgy.n.01'}, {'source': 'metrology.n.01', 'target': 'science.n.01'}, {'source': 'natural_history.n.01', 'target': 'science.n.01'}, {'source': 'natural_science.n.01', 'target': 'science.n.01'}, {'source': 'natural_science.n.01', 'target': 'chemistry.n.01'}, {'source': 'natural_science.n.01', 'target': 'cosmography.n.01'}, {'source': 'natural_science.n.01', 'target': 'earth_science.n.01'}, {'source': 'natural_science.n.01', 'target': 'life_science.n.01'}, {'source': 'natural_science.n.01', 'target': 'physics.n.01'}, {'source': 'natural_science.n.01', 'target': 'physics.n.02'}, {'source': 'nutrition.n.03', 'target': 'science.n.01'}, {'source': 'psychology.n.01', 'target': 'science.n.01'}, {'source': 'psychology.n.01', 'target': 'abnormal_psychology.n.01'}, {'source': 'psychology.n.01', 'target': 'applied_psychology.n.01'}, {'source': 'psychology.n.01', 'target': 'cognitive_psychology.n.01'}, {'source': 'psychology.n.01', 'target': 'comparative_psychology.n.01'}, {'source': 'psychology.n.01', 'target': 'developmental_psychology.n.01'}, {'source': 'psychology.n.01', 'target': 'differential_psychology.n.01'}, {'source': 'psychology.n.01', 'target': 'experimental_psychology.n.01'}, {'source': 'psychology.n.01', 'target': 'physiological_psychology.n.01'}, {'source': 'psychology.n.01', 'target': 'psychometry.n.01'}, {'source': 'psychology.n.01', 'target': 'social_psychology.n.01'}, {'source': 'social_science.n.01', 'target': 'science.n.01'}, {'source': 'social_science.n.01', 'target': 'anthropology.n.01'}, {'source': 'social_science.n.01', 'target': 'civics.n.01'}, {'source': 'social_science.n.01', 'target': 'economics.n.01'}, {'source': 'social_science.n.01', 'target': 'home_economics.n.01'}, {'source': 'social_science.n.01', 'target': 'politics.n.02'}, {'source': 'social_science.n.01', 'target': 'proxemics.n.01'}, {'source': 'social_science.n.01', 'target': 'sociology.n.01'}, {'source': 'strategics.n.01', 'target': 'science.n.01'}, {'source': 'systematics.n.01', 'target': 'science.n.01'}, {'source': 'systematics.n.01', 'target': 'biosystematics.n.01'}, {'source': 'systematics.n.01', 'target': 'taxonomy.n.02'}, {'source': 'thanatology.n.01', 'target': 'science.n.01'}, {'source': 'machine_translation.n.01', 'target': 'artificial_intelligence.n.01'}, {'source': 'machine_translation.n.01', 'target': 'computational_linguistics.n.01'}, {'source': 'grammar.n.01', 'target': 'descriptive_linguistics.n.01'}, {'source': 'grammar.n.01', 'target': 'descriptive_grammar.n.01'}, {'source': 'grammar.n.01', 'target': 'morphology.n.02'}, {'source': 'grammar.n.01', 'target': 'prescriptive_grammar.n.01'}, {'source': 'grammar.n.01', 'target': 'syntax.n.03'}, {'source': 'morphophonemics.n.01', 'target': 'descriptive_linguistics.n.01'}, {'source': 'phonology.n.01', 'target': 'descriptive_linguistics.n.01'}, {'source': 'phonology.n.01', 'target': 'orthoepy.n.02'}, {'source': 'lexicostatistics.n.01', 'target': 'etymology.n.02'}, {'source': 'cognitive_semantics.n.01', 'target': 'semantics.n.01'}, {'source': 'deixis.n.01', 'target': 'semantics.n.01'}, {'source': 'formal_semantics.n.01', 'target': 'semantics.n.01'}, {'source': 'lexical_semantics.n.01', 'target': 'semantics.n.01'}, {'source': 'knowledge_domain.n.01', 'target': 'content.n.05'}, {'source': 'knowledge_domain.n.01', 'target': 'discipline.n.01'}, {'source': 'knowledge_domain.n.01', 'target': 'region.n.05'}, {'source': 'knowledge_domain.n.01', 'target': 'scientific_knowledge.n.01'}]
+};
+
+    var width = 960,
+            height = 500;
+    
+		var simulation = d3.forceSimulation()
+            .nodes(graph.nodes);                    
+
+        simulation
+            .force("charge_force", d3.forceManyBody().strength(-1000))    
+            .force("center_force", d3.forceCenter(width / 2, height / 2))
+            .force("links", d3.forceLink(graph.links).id(function (d) { return d.name; }))            
+            .force("collide", d3.forceCollide().radius(2))
+            ;         
+
+        simulation
+            .on("tick", ticked);
+
+        //add encompassing group for the zoom 
+        var g = svg.append("g")
+            .attr("class", "everything");
+    
+
+        var link = g.append("g")
+            .attr("class", "links")
+            .selectAll("line")
+            .data(graph.links)
+            .enter().append("line")
+            .attr("stroke", function(d) { return d3.color("#000000"); })
+
+        var node = g.append("g")
+            .attr("class", "nodes")
+            .selectAll("circle")
+            .data(graph.nodes)
+            .enter()
+            .append("circle")
+            .attr("r", 10)
+
+        //add drag capabilities  
+        var drag_handler = d3.drag()
+            .on("start", drag_start)
+            .on("drag", drag_drag)
+            .on("end", drag_end);	
+
+        drag_handler(node);
+
+        var text = g.append("g").attr("class", "labels").selectAll("g")
+            .data(graph.nodes)
+            .enter().append("g")
+            .append("text")
+            .attr("x", 0)
+            .attr("y", ".31em")
+            .style("font-family", "sans-serif")
+            .style("text-anchor", "middle")
+            .style("font-size", "0.7em")
+            .text(function (d) { return d.name; });
+
+        text.on("click", function (d) {
+            d3.event.stopImmediatePropagation();
+            console.log(d.name);
+        });
+
+        node.append("title")
+            .text(function (d) { return d.name; });
+        
+        //add zoom capabilities 
+        var zoom_handler = d3.zoom()
+            .on("zoom", zoom_actions);
+
+        zoom_handler(svg); 
+
+        //Drag functions 
+        //d is the node 
+        function drag_start(d) {
+            if (!d3.event.active) simulation.alphaTarget(0.3).restart();
+            d.fx = d.x;
+            d.fy = d.y;
+        }
+        
+        //make sure you can't drag the circle outside the box
+        function drag_drag(d) {
+            d.fx = d3.event.x;
+            d.fy = d3.event.y;
+        }
+        
+        function drag_end(d) {
+            if (!d3.event.active) simulation.alphaTarget(0);
+            d.fx = null;
+            d.fy = null;
+        }
+        
+        //Zoom functions 
+        function zoom_actions(){
+            g.attr("transform", d3.event.transform)
+        }
+        
+        function ticked() {
+            //update circle positions each tick of the simulation 
+            node
+                .attr("cx", function(d) { return d.x; })
+                .attr("cy", function(d) { return d.y; });
+                
+            //update link positions 
+            link
+                .attr("x1", function(d) { return d.source.x; })
+                .attr("y1", function(d) { return d.source.y; })
+                .attr("x2", function(d) { return d.target.x; })
+                .attr("y2", function(d) { return d.target.y; });
+
+            text
+                .attr("transform", function (d) { return "translate(" + d.x + "," + d.y + ")"; });
+        }
+  </script>
+</body>
